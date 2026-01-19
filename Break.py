@@ -1,9 +1,10 @@
 a = input("Enter the word: ")
 
 for i in a:
-    if (i == 'A'):
+    if (i == 'a'):
 
-        print("A is found")
+        print("a is found")
         break
     else:
-        print("A is not found")
+
+        print("a is not found")

@@ -1,7 +1,7 @@
 import os
 
 def clear_screen():
-    os.system("cls" if os.name == "nt" else"clear")
+    os.system("cls" if os.name == "nt" else "clear")
 
 def print_board(board):
     print("\n")
@@ -24,21 +24,21 @@ def check_winner(board, player):
     for pos in win_positions:
         if board[pos[0]] == board[pos[1]] == board[pos[2]] == player:
             return True
-        return False
-    
-def get_valid_move(board, player_name):
-        while True:
-            try:
-                move = int(input(f"{player_name}, choose position (1-9): "))
-                if move < 0 or move > 8:
-                    print("❌ Choose a number between 1 and 9.")
-                elif board[move] != " ":
-                    print("❌ Position already taken.")
-                else:
-                    return move
-            except ValueError:
-                print("❌ Please enter a valid number.")
+    return False   # ✅ moved outside loop
 
+def get_valid_move(board, player_name):
+    while True:
+        try:
+            move = int(input(f"{player_name}, choose position (1-9): ")) - 1  # ✅ adjusted index
+
+            if move < 0 or move > 8:
+                print("❌ Choose a number between 1 and 9.")
+            elif board[move] != " ":
+                print("❌ Position already taken.")
+            else:
+                return move
+        except ValueError:
+            print("❌ Please enter a valid number.")
 
 def play_game(player1, player2, scores):
     board = [" "] * 9
@@ -59,17 +59,19 @@ def play_game(player1, player2, scores):
             print(f"🎉 {current_name} wins!")
             scores[current_name] += 1
             return
-        
+
+        # ✅ fixed player switching
         if current_player == "X":
             current_player = "O"
-            current_player = player2
+            current_name = player2
         else:
             current_player = "X"
             current_name = player1
 
-        clear_screen()
-        print_board(board)
-        print("🤝 It's a Draw!")
+    # ✅ draw only after loop ends
+    clear_screen()
+    print_board(board)
+    print("🤝 It's a Draw!")
 
 def main():
     print("🎮 Welcome to Advanced Tic Tac Toe 🎮\n")
@@ -84,7 +86,7 @@ def main():
 
         again = input("\nDo you want to play again? (yes/no): ").lower()
         if again != "yes":
-            print("\n🏆 Final Scores: ")
+            print("\n🏆 Final Scores:")
             print(f"{player1}: {scores[player1]}")
             print(f"{player2}: {scores[player2]}")
             print("Thanks for playing!")

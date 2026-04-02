@@ -33,7 +33,7 @@ enemyX = []
 enemyY = []
 enemyX_change = []
 enemyY_change = []
-num_of_enemies = 6
+num_of_enemies = 5 # Reduced for better balancing
 
 for i in range(num_of_enemies):
     enemy_Img.append(pygame.image.load('enemy-removebg-preview.png'))
@@ -44,7 +44,7 @@ for i in range(num_of_enemies):
     enemyY_change.append(ENEMY_SPEED_Y)
 
 bullet_Img = pygame.image.load('bullet-removebg-preview.png')
-bullet_Img = pygame.transform.scale(bullet_Img, (16, 32))
+bullet_Img = pygame.transform.scale(bullet_Img, (20, 32))
 bulletX = 0
 bulletY = PLAYER_START_Y
 bulletX_change = 0

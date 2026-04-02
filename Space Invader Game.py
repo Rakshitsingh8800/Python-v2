@@ -33,7 +33,7 @@ enemyX = []
 enemyY = []
 enemyX_change = []
 enemyY_change = []
-num_of_enemies = 5 # Reduced for better balancing
+num_of_enemies = 5 
 
 for i in range(num_of_enemies):
     enemy_Img.append(pygame.image.load('enemy-removebg-preview.png'))

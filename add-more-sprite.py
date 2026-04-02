@@ -13,8 +13,12 @@ BULLET_SPEED_Y = 14
 COLLISION_DISTANCE = 30
 
 pygame.init()
+pygame.mixer.init()  # Initialize the mixer for sound effects
+
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
+pygame.mixer.music.load('horror.mp3')  # Load background music
+pygame.mixer.music.play(-1)  # Play background music on loop
 # Background
 background = pygame.image.load('nightroad.jpg')
 background = pygame.transform.scale(background, (800, 500))
